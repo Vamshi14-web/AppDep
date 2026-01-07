@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+.App {
+  background-image: url("https://cdn.wallpapersafari.com/48/69/HEPCs2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+}
+
+form {
+  width: 350px;          
+  padding: 25px;
+ 
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  text-align: left;
+}
+h1,h5{
+  text-align: center;
+}
+
+form div {
+  margin: 12px 0;
+}
+
+form label {
+  display: block;
+  margin-bottom: 1px;
+  font-weight: bold;
+  color:black;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+} 
+
+input:focus {
+  outline: none;
+}
+
+button {
+  width: 100%;
+  background-color: teal;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #006d6d; 
+}
+
+.links {
+  text-decoration: none;
+  color: deepskyblue;
+  font-size: 14px;
+}
+img{ 
+  width: 120px; 
+  height: 130px; 
+  border-radius: 5px; 
+  border: 3px solid white; 
+  box-shadow: 0px 2px 3px; 
+}
+nav{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #006d6d;
+  font-weight: bolder;
+  padding: 5px;
+}
+.mainDiv input{
+  border: 1px solid black;
+}
+.navLink{
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+.navLink:hover {
+  text-decoration: underline;
+}
