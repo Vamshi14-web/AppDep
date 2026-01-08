@@ -14,11 +14,7 @@ app.use('/profilePic',express.static('profilePic'));
 
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("*",(req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
@@ -159,6 +155,11 @@ res.json({status:"Failur",msg:"Nothing id updated"})
 }
 });
 
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*",(req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 app.listen(port,()=>{
     console.log(`Listening to Port ${port}`);
 });
