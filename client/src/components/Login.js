@@ -23,7 +23,7 @@ function Login() {
     dataToSend.append("token", token);
 
     let response = await fetch(
-      "http://localhost:2233/validateToken",
+      "/validateToken",
       { method: "POST", body: dataToSend }
     );
 
@@ -45,7 +45,7 @@ function Login() {
         dataToSend.append("email",emailInputRef.current.value);
         dataToSend.append("password",passwordInputRef.current.value);
 
-     let JSONData = await fetch("http://localhost:2233/login",{method:"POST",body:dataToSend});
+     let JSONData = await fetch("/login",{method:"POST",body:dataToSend});
      let JSOData = await JSONData.json();
      console.log(JSOData);
      alert(JSOData.msg);

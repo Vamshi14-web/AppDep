@@ -4,12 +4,21 @@ const cors = require("cors");
 const multer = require("multer");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
+const dotenv = require("dotenv");
+dotenv.config();
+const port = process.env.PORT || 2233;
 
 let app = express();
 app.use(cors());
 app.use('/profilePic',express.static('profilePic'));
 
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
@@ -97,9 +106,6 @@ app.post("/validateToken", upload.none(), async (req, res) => {
   }
 });
 
-
-
-
 app.post("/login",upload.none(),async(req,res)=>{
     let userArr = await user.find().and([{email: req.body.email}]);
     if (userArr.length === 0) {
@@ -153,8 +159,8 @@ res.json({status:"Failur",msg:"Nothing id updated"})
 }
 });
 
-app.listen(2233,()=>{
-    console.log("Listening to Port 2233");
+app.listen(port,()=>{
+    console.log(`Listening to Port ${port}`);
 });
 
 let userSchema = new mongoose.Schema({
@@ -171,7 +177,7 @@ let user = new mongoose.model("user",userSchema,"user");
 
 let connectToMDB = async()=>{
     try{
-        await mongoose.connect("mongodb+srv://Mr_Stark:StarkIndustries@mernstack2509.8yvpvmj.mongodb.net/MERNStudents?appName=MernStack2509");
+        await mongoose.connect(process.env.MDBURL);
         console.log("Successfully Connected to MDB");
     }catch(err){
         console.log("Unable to Connect");

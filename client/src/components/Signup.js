@@ -23,7 +23,7 @@ function Signup() {
         for(let i=0;i<profilePicInputRef.current.value.length;i++){
             dataToSend.append("profilePic",profilePicInputRef.current.files[i]);
         };
-     let JSONData = await fetch("http://localhost:2233/signup",{method:"POST",body:dataToSend});
+     let JSONData = await fetch("/signup",{method:"POST",body:dataToSend});
      let JSOData = await JSONData.json();
      console.log(JSOData);
      alert(JSOData.msg);
