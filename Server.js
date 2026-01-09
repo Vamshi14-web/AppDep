@@ -156,12 +156,8 @@ res.json({status:"Failur",msg:"Nothing id updated"})
 });
 
 app.use(express.static(path.join(__dirname, "client/build")));
-
-app.get("*",(req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
-app.listen(port,()=>{
-    console.log(`Listening to Port ${port}`);
 });
 
 let userSchema = new mongoose.Schema({
