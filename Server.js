@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 dotenv.config();
-const port = process.env.PORT || 2233;
+
 
 let app = express();
 app.use(cors());
@@ -14,7 +14,10 @@ app.use('/profilePic',express.static('profilePic'));
 
 const path = require("path");
 
-
+const PORT = process.env.PORT || 2233;
+app.listen(PORT,()=>{
+    console.log(`Listening to port ${PORT}`)
+})
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
